@@ -36,4 +36,12 @@ public class MovieController {
         movieService.deleteMovie(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/{movieId}/actors/{actorId}")
+    public ResponseEntity<Movie> addActorToMovie(
+            @PathVariable Long movieId,
+            @PathVariable Long actorId) {
+        Movie updatedMovie = movieService.addActorToMovie(movieId, actorId);
+        return ResponseEntity.ok(updatedMovie);
+    }
 }
